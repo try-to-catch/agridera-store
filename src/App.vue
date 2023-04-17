@@ -1,8 +1,10 @@
 <script setup lang="ts">
 
+import ResponsiveFooter from "@/components/ResponsiveFooter.vue";
 </script>
 
 <template>
-  <div></div>
+  <router-view></router-view>
+  <responsive-footer/>
 </template>
 
