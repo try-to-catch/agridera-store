@@ -16,7 +16,7 @@
                 <div class="mt-[30px] max-w-[540px] w-full lg:max-w-full lg:w-full">
                     <button v-if="isAddButtonActive"
                             class="text-custom-green w-full space-x-5 py-2.5 justify-center px-[30px] border-custom-green border-2 flex items-center rounded-[60px]"
-                            @click="addProductToCart(product.id)">
+                            @click="addProductToCart(product?.id || routeId)">
                         <font-awesome-icon :icon="['fas', 'cart-shopping']"/>
                         <span class="font-bold text-[17px]">Add to cart</span>
                     </button>
@@ -80,7 +80,7 @@ onMounted(() => {
 })
 
 
-const addProductToCart = (id: number) => {
+const addProductToCart = (id: number | string) => {
     addToCart(id)
     isAddButtonActive.value = false
 }
