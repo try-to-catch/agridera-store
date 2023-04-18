@@ -1,9 +1,10 @@
 import type {IProduct} from "@/types/IProduct";
+import type {ComputedRef, Ref} from "vue";
 import {computed, ref} from "vue";
 
 export default function useProducts() {
 
-    const responseData = [
+    const responseData: IProduct[] = [
         {
             id: 1,
             title: 'Red Onion',
@@ -41,14 +42,14 @@ export default function useProducts() {
         },
     ]
 
-    const products = ref<IProduct[]>([]);
+    const products: Ref<IProduct[]> = ref([]);
 
-    const isProductsSet = computed(() => products.value.length)
-    const getProducts = function (): IProduct[] {
+    const isProductsSet: ComputedRef<number> = computed(() => products.value.length)
+    const getProducts = (): IProduct[] => {
         return products.value = responseData
     }
 
-    const getProduct = function (id: number): IProduct | undefined {
+    const getProduct = (id: number): IProduct | undefined => {
         return responseData.find((item: IProduct): boolean => id === item.id)
     }
 
