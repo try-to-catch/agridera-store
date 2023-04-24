@@ -15,3 +15,12 @@ const app = createApp(App)
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.js')
+        .then(function() {
+            console.log('Service worker registered!');
+        });
+}
+
