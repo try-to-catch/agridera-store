@@ -34,7 +34,7 @@ const router = createRouter({
         {
             path: '/get-countries',
             name: 'getCountries',
-            component: () => import('@/views/CountryList.vue')
+            component: () => import('@/views/CapitalList.vue')
         }
     ]
 })
