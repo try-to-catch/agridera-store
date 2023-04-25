@@ -25,6 +25,16 @@ const router = createRouter({
             path: '/contact-us',
             name: 'contactUs',
             component: () => import('@/views/ContactUsView.vue')
+        },
+        {
+            path: '/get-pet',
+            name: 'getPet',
+            component: () => import('@/views/PetGenerator.vue')
+        },
+        {
+            path: '/get-countries',
+            name: 'getCountries',
+            component: () => import('@/views/CountryList.vue')
         }
     ]
 })
