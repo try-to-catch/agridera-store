@@ -4,7 +4,7 @@ self.addEventListener('install', function(event) {
         caches.open("static")
             .then(function(cache) {
                 console.log("precaching");
-                cache.add('./assets/index-2c6976a3.js');
+                cache.add('./assets/index-9584e058.js');
                 cache.add('./assets/index-a88ea00c.css');
                 cache.add('images/background.jpg');
                 cache.add('/');
@@ -26,3 +26,8 @@ self.addEventListener('fetch', function(event) {
             })
     )
 });
+
+self.addEventListener('push', event => {
+    const notification = event.data.text();
+    self.registration.showNotification(notification, {});
+})
