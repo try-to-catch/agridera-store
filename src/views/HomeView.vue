@@ -22,16 +22,6 @@ const askPermission = async (): Promise<void | never> => {
 }
 
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-        .register('/sw.js')
-        .then(function () {
-            console.log('Service worker registered!');
-        });
-
-
-}
-
 </script>
 
 <template>
