@@ -1,3 +1,39 @@
+<script lang="ts" setup>
+import HomeHeader from "@/components/HomeHeader.vue";
+
+const askPermission = async (): Promise<void | never> => {
+    if (!('PushManager' in window && await navigator.serviceWorker.ready)) return
+
+    if (!confirm("Would you like to receive push notifications?")) return
+
+    return new Promise(function (resolve, reject) {
+        const permissionResult = Notification.requestPermission((result: 'denied' | 'granted' | 'default'): void => {
+            resolve(result);
+        });
+
+        if (permissionResult) {
+            permissionResult.then(resolve, reject);
+        }
+    })
+        .then(function (permissionResult) {
+            if (permissionResult !== "granted")
+                throw new Error('We weren\'t granted permission.');
+        });
+}
+
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/sw.js')
+        .then(function () {
+            console.log('Service worker registered!');
+        });
+
+
+}
+
+</script>
+
 <template>
     <home-header/>
     <main>
@@ -6,7 +42,7 @@
                 style="background-image: url(/images/background.jpg)"
         >
             <div
-                    class="text-center sm:container sm:mx-auto mx-2.5 flex flex-col items-center justify-center h-full"
+                    class="text-center sm:container sm:mx-auto mx-2.5 flex flex-col items-center justify-center h-full relative"
             >
                 <h1 class="text-custom-brown font-bold text-5xl">
                     Agridera Seeds and Agriculture Ltd
@@ -19,6 +55,10 @@
                         read more
                     </router-link>
                 </div>
+                <button class="absolute bottom-20 font-semibold subscribe-for-push mt-10 rounded-md bg-gray-800 text-white text-lg py-2 px-3.5 "
+                        @click="askPermission">
+                    SUBSCRIBE FOR PUSH NOTIFICATIONS
+                </button>
             </div>
         </section>
         <section>
@@ -183,15 +223,6 @@
         </section>
     </main>
 </template>
-
-<script>
-import HomeHeader from "@/components/HomeHeader.vue";
-
-export default {
-    name: "IndexView",
-    components: {HomeHeader}
-}
-</script>
 
 <style scoped>
 
