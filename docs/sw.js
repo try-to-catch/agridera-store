@@ -4,8 +4,8 @@ self.addEventListener('install', function(event) {
         caches.open("static")
             .then(function(cache) {
                 console.log("precaching");
-                cache.add('./assets/index-9584e058.js');
-                cache.add('./assets/index-a88ea00c.css');
+                cache.add('./assets/index-b4e55099.js');
+                cache.add('./assets/index-b10a83b5.css');
                 cache.add('images/background.jpg');
                 cache.add('/');
             })
