@@ -1,5 +1,5 @@
 <template>
-    <header class="container mx-auto hidden xl:flex justify-between pt-[20px] pb-[22px]">
+    <header class="container mx-auto hidden xl:flex justify-between pt-[20px] pb-[22px] relative z-40">
         <div class="w-[226px] h-[113px]">
             <img alt="logo" src="@/assets/images/icons/logo.png"/>
         </div>

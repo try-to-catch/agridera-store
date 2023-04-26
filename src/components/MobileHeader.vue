@@ -1,5 +1,5 @@
 <template>
-    <header class=" xl:hidden drop-shadow-md">
+    <header class="relative xl:hidden drop-shadow-md z-50">
         <div class="flex justify-between px-2.5 z-10 relative bg-white py-5">
             <div class="w-[100px]">
                 <img alt="logo" src="@/assets/images/icons/logo.png"/>
